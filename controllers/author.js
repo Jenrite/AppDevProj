@@ -126,3 +126,11 @@ const createAuthor = async (req, res) => {
       });
     }
   };
+
+  export {
+    createAuthor,
+    getAuthors,
+    getAuthor,
+    updateAuthor,
+    deleteAuthor,
+  };

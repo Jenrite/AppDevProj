@@ -126,3 +126,11 @@ const createLoan = async (req, res) => {
       });
     }
   };
+
+  export {
+    createLoan,
+    getLoans,
+    getLoan,
+    updateLoan,
+    deleteLoan,
+  };

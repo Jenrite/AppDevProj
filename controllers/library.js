@@ -126,3 +126,11 @@ const createLibrary = async (req, res) => {
       });
     }
   };
+
+  export {
+    createLibrary,
+    getLibraries,
+    getLibrary,
+    updateLibrary,
+    deleteLibrary,
+  };

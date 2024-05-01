@@ -126,3 +126,11 @@ const createGenre = async (req, res) => {
       });
     }
   };
+
+  export {
+    createGenre,
+    getGenres,
+    getGenre,
+    updateGenre,
+    deleteGenre,
+  };

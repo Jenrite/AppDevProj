@@ -126,3 +126,11 @@ const createBook = async (req, res) => {
       });
     }
   };
+
+  export {
+    createBook,
+    getBooks,
+    getBook,
+    updateBook,
+    deleteBook,
+  };

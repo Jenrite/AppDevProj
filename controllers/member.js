@@ -126,3 +126,11 @@ const createMember = async (req, res) => {
       });
     }
   };
+
+  export {
+    createMember,
+    getMembers,
+    getMember,
+    updateMember,
+    deleteMember,
+  };
