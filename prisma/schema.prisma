@@ -70,7 +70,7 @@ model Loan {
   updatedAt DateTime @updatedAt
   bookId    Int
   libraryId Int
-  memberId  Int
+    Int
 }
 
 model Library {
@@ -81,7 +81,7 @@ model Library {
   books     Book[]
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
-  Loan      Loan[]
+  loan      Loan[]
 }
 
 enum Status {
