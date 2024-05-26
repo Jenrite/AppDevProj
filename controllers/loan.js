@@ -169,7 +169,7 @@ const createLoan = async (req, res) => {
           },
           memberId: {
             equals: req.query.memberId || undefined,
-          },
+          }
         };
       }
   

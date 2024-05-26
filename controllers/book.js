@@ -127,10 +127,250 @@ const createBook = async (req, res) => {
     }
   };
 
+  const filterBooks = async (req, res) => {
+    try {
+      const query = {};
+  
+      if (req.query.id ||  req.query.title || req.query.pub_year || req.query.on_hold
+        || req.query.createdAt || req.query.updatedAt || req.query.Author || req.query.authorId 
+        || req.query.Genre || req.query.genreId || req.query.Loan || req.query.Library || req.query.libraryId) {
+        query.where = {
+          id: {
+            equals: req.query.id || undefined,
+          },
+          title: {
+            equals: req.query.title || undefined,
+          },
+          pub_year: {
+            equals: req.query.pub_year || undefined,
+          },
+          on_hold: {
+            equals: req.query.on_hold || undefined,
+          },
+          createdAt: {
+            equals: req.query.createdAt || undefined,
+          },
+          updatedAt: {
+            equals: req.query.updatedAt || undefined,
+          },
+          Author: {
+            equals: req.query.Author || undefined,
+          },
+          authorId: {
+            equals: req.query.authorId || undefined,
+          },
+          memberId: {
+            equals: req.query.memberId || undefined,
+          },
+          Genre: {
+            equals: req.query.Genre || undefined,
+          },
+          genreId: {
+            equals: req.query.genreId || undefined,
+          },
+          Loan: {
+            equals: req.query.Loan || undefined,
+          },
+          Library: {
+            equals: req.query.Library || undefined,
+          },
+          libraryId: {
+            equals: req.query.libraryId || undefined,
+          }
+        };
+      }
+  
+      const book = await prisma.book.findMany(query);
+  
+      if (book.length === 0) {
+        return res.status(200).json({ msg: "No books found" });
+      }
+  
+      return res.json({
+        data: book,
+      });
+    } catch (err) {
+      return res.status(500).json({
+        msg: err.message,
+      });
+    }
+  };
+  
+  const sortBooks = async (req, res) => {
+    try {
+      const sortBy = req.query.sortBy || "id";
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+  
+      const query = {
+        orderBy: {
+          [sortBy]: sortOrder,
+        },
+      };
+  
+      if (req.query.id ||  req.query.title || req.query.pub_year || req.query.on_hold
+        || req.query.createdAt || req.query.updatedAt || req.query.Author || req.query.authorId 
+        || req.query.Genre || req.query.genreId || req.query.Loan || req.query.Library || req.query.libraryId) {
+        query.where = {
+          id: {
+            equals: req.query.id || undefined,
+          },
+          title: {
+            equals: req.query.title || undefined,
+          },
+          pub_year: {
+            equals: req.query.pub_year || undefined,
+          },
+          on_hold: {
+            equals: req.query.on_hold || undefined,
+          },
+          createdAt: {
+            equals: req.query.createdAt || undefined,
+          },
+          updatedAt: {
+            equals: req.query.updatedAt || undefined,
+          },
+          Author: {
+            equals: req.query.Author || undefined,
+          },
+          authorId: {
+            equals: req.query.authorId || undefined,
+          },
+          memberId: {
+            equals: req.query.memberId || undefined,
+          },
+          Genre: {
+            equals: req.query.Genre || undefined,
+          },
+          genreId: {
+            equals: req.query.genreId || undefined,
+          },
+          Loan: {
+            equals: req.query.Loan || undefined,
+          },
+          Library: {
+            equals: req.query.Library || undefined,
+          },
+          libraryId: {
+            equals: req.query.libraryId || undefined,
+          }
+        };
+      }
+  
+      const book = await prisma.book.findMany(query);
+  
+      if (book.length === 0) {
+        return res.status(200).json({ msg: "No books found" });
+      }
+  
+      return res.json({
+        data: book,
+      });
+    } catch (err) {
+      return res.status(500).json({
+        msg: err.message,
+      });
+    }
+  };
+  
+  const paginationDefault = {
+    amount: 10, // The number of items per page
+    page: 1, // The page number
+  };
+  
+  const pageBooks = async (req, res) => {
+    try {
+      const sortBy = req.query.sortBy || "id";
+      const sortOrder = req.query.sortOrder === "desc" ? "desc" : "asc";
+  
+      const amount = req.query.amount || paginationDefault.amount;
+      const page = req.query.page || paginationDefault.page;
+  
+      const query = {
+        take: Number(amount),
+        skip: (Number(page) - 1) * Number(amount),
+        orderBy: {
+          [sortBy]: sortOrder,
+        },
+        include: {},
+      };
+  
+      if (req.query.id ||  req.query.title || req.query.pub_year || req.query.on_hold
+        || req.query.createdAt || req.query.updatedAt || req.query.Author || req.query.authorId 
+        || req.query.Genre || req.query.genreId || req.query.Loan || req.query.Library || req.query.libraryId) {
+        query.where = {
+          id: {
+            equals: req.query.id || undefined,
+          },
+          title: {
+            equals: req.query.title || undefined,
+          },
+          pub_year: {
+            equals: req.query.pub_year || undefined,
+          },
+          on_hold: {
+            equals: req.query.on_hold || undefined,
+          },
+          createdAt: {
+            equals: req.query.createdAt || undefined,
+          },
+          updatedAt: {
+            equals: req.query.updatedAt || undefined,
+          },
+          Author: {
+            equals: req.query.Author || undefined,
+          },
+          authorId: {
+            equals: req.query.authorId || undefined,
+          },
+          memberId: {
+            equals: req.query.memberId || undefined,
+          },
+          Genre: {
+            equals: req.query.Genre || undefined,
+          },
+          genreId: {
+            equals: req.query.genreId || undefined,
+          },
+          Loan: {
+            equals: req.query.Loan || undefined,
+          },
+          Library: {
+            equals: req.query.Library || undefined,
+          },
+          libraryId: {
+            equals: req.query.libraryId || undefined,
+          }
+        };
+      }
+  
+      const book = await prisma.book.findMany(query);
+  
+      if (book.length === 0) {
+        return res.status(200).json({ msg: "No books found" });
+      }
+  
+      const hasNextPage = genre.book === Number(amount);
+  
+      return res.json({
+        data: book,
+        nextPage: hasNextPage ? Number(page) + 1 : null,
+      });
+    } catch (err) {
+      return res.status(500).json({
+        msg: err.message,
+      });
+    }
+  };
+  
   export {
     createBook,
     getBooks,
     getBook,
     updateBook,
     deleteBook,
+    filterBooks,
+    sortBooks,
+    pageBooks,
   };
+  
+
