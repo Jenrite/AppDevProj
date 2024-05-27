@@ -70,8 +70,8 @@ model Loan {
   updatedAt DateTime @updatedAt
   bookId    Int
   libraryId Int
-    Int
-}
+ memberId Int
+} 
 
 model Library {
   id        Int      @id @default(autoincrement())
