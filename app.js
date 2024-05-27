@@ -1,5 +1,6 @@
 // Import the Express module
 import express from "express";
+require('dotenv').config();
 
 // Routes go here
 import authorRoute from "./routes/author.js";

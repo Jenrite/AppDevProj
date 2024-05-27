@@ -7,7 +7,7 @@ const main = async () => {
       data: {
         first_name: "George",
         last_name: "Anderson",
-        birth_date: 1932-10-21,
+        birth_date: "1932-10-21T14:30:00Z",
         death_date: null,
       },
     });
@@ -19,31 +19,29 @@ const main = async () => {
           fiction: true,
         },
       });
-    // await prisma.member.create({
-    // data: {
-    //     first_name: "Julian",
-    //     last_name: "Peterson",
-    //     status: valid,
-    //     date_join: 2009-4-15, 
-    // },
-    // });
-    // await prisma.library.create({
-    //     data: {
-    //         address: "645 Pinkle St",
-    //         city: "Threed",
-    //         post_: 3963,
-    // },
-    // });
-
-    // await prisma.book.create({
-    //     data: {
-    //         title: "Tales of bibble",
-    //         pub_year: 1952-8-17,
-    //         on_hold: false,
-    //         city: "Threed",
-    //         post_: 3963,
-    // },
-    // });
+    await prisma.member.create({
+    data: {
+        first_name: "Julian",
+        last_name: "Peterson",
+        status: "valid",
+        date_join: "2024-05-27T14:30:00Z", 
+    },
+    });
+    await prisma.library.create({
+        data: {
+            address: "645 Pinkle St",
+            city: "Threed",
+            post_code: 3963,
+    },
+    });
+    await prisma.book.create({
+        data: {
+            title: "Tales of bimbufig",
+            pub_year: "1952-8-17T14:30:00Z",
+            on_hold: false,
+            
+    },
+    });
 
   } catch (err) {
     console.error(err);

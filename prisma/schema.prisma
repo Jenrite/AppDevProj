@@ -21,7 +21,7 @@ model Book {
   authorId  Int?
   Genre     Genre?   @relation(fields: [genreId], references: [id])
   genreId   Int?
-  Loan      Loan[]
+  loan      Loan[]
   Library   Library? @relation(fields: [libraryId], references: [id])
   libraryId Int?
 }
@@ -56,7 +56,7 @@ model Member {
   date_join  DateTime
   createdAt  DateTime @default(now())
   updatedAt  DateTime @updatedAt
-  Loan       Loan[]
+  loan       Loan[]
 }
 
 model Loan {
@@ -70,7 +70,7 @@ model Loan {
   updatedAt DateTime @updatedAt
   bookId    Int
   libraryId Int
- memberId Int
+  memberId Int
 } 
 
 model Library {
