@@ -9,7 +9,7 @@ const main = async () => {
         last_name: "Anderson",
         birth_date: "1932-10-21T14:30:00Z",
         death_date: null,
-        books: 1,
+        // books: 1,
       },
     });
     await prisma.genre.create({
@@ -18,7 +18,7 @@ const main = async () => {
           book_num: "2",
           language: "english",
           fiction: true,
-          books: 1,
+          // books: 1,
         },
       });
     await prisma.member.create({
@@ -32,15 +32,15 @@ const main = async () => {
     await prisma.library.create({
         data: {
             address: "645 Pinkle St",
-            city: "Threed",
+            city: "Threede",
             post_code: 3963,
-            books: 1,
+            // books: 1,
     },
     });
     await prisma.book.create({
         data: {
             title: "Tales of bimbufig",
-            pub_year: "1952-8-17T14:30:00Z",
+            pub_year: "1964-05-27T14:30:00Z",
             on_hold: false,
 
     },
